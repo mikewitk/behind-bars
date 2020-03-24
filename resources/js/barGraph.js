@@ -83,24 +83,23 @@ const addBarGraph = ( yLabel, xLabel, data, graphContainer ) => {
   insertBars( data, graphContainer );
   insertXAxis( xLabel, graphContainer );
   
-  const allBars = document.getElementsByClassName('bar')
+  // !!!!!!!!!!!TOOLTIP WIP!!!!!!!!!!!!!!!!
+  // const allBars = document.getElementsByClassName('bar')
   
-  const tooltip = (element) => {
+  // const tooltip = (element) => {
 
-    const barArea = document.getElementById('graph')
-    console.log(element.target)
-    let spanTooltip = document.createElement('span');
-    spanTooltip.classList.add('tooltiptext');
-    spanTooltip.innerText = "Hello There";
-    // spanTooltip.innerText = `${element.name} - ${element.charCount} chars`;
+  //   const barArea = document.getElementById('graph')
+  //   console.log(element.target)
+  //   let spanTooltip = document.createElement('span');
+  //   spanTooltip.classList.add('tooltiptext');
+  //   // spanTooltip.innerText = `${element.name} - ${element.charCount} chars`;
 
-    barArea.appendChild(spanTooltip)
+  //   barArea.appendChild(spanTooltip)
     
-  }
-  console.log('antes do for')
-  for ( let i = 0; i < 10; i++ ) {
-    console.log("for")
-    allBars[i].addEventListener('mouseover', e => tooltip(e))
-  }
+  // }
+  // for ( let i = 0; i < 10; i++ ) {
+  //   console.log("for")
+  //   allBars[i].addEventListener('mouseover', e => tooltip(e))
+  // }
   
 }
