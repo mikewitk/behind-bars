@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgba(0, 128, 128, 0.336);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td, th {
+  border: 1px solid #999;
+  padding: 2px 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.graph-container {
+  background-color: #494747;
+  height: 300px;
+  margin: 20px 0;
+  padding-top: 10px;
+}
+
+.graph-area {
+  padding: 0 5px;
+  height: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.y-axis-area {
+  display: grid;
+  grid-template-rows: 80% 20% ;
+  height: 100%;
+}
+
+.y-axis {
+  border-right: 2px solid lightgray;
+  color: #eceaea69;
+  font-size: 10px;
+  padding-right: 10px;
+}
+
+.y-text {
+  border-top: 2px solid lightgray;
+  border-right: 2px solid lightgray;
+}
+
+.bar-area {
+  display: grid;
+  grid-template-rows: 80% 20% ;
+  height: 100%;
+  border-right: 2px dashed rgba(231, 228, 228, 0.123);
+  width: 50px;
+}
+
+.bar-graph {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.bar {
+  display: flex;
+  height: 60%;
+  background-color: blue;
+  width: 80%;
+}
+
+.bar-legend {
+  display: flex;
+  align-items: center;
+  border-top: 2px solid lightgray;
+  color: white;
+  font-size: 8px;
+  text-align: center;
+  word-break: break-word;
+}
+
+.x-axis-area {
+  display: grid;
+  grid-template-rows: 80% 20% ;
+  height: 100%;
+}
+
+.x-text {
+  color: #eceaea69;
+  font-size: 10px;
+  border-top: 2px solid lightgray;
+  text-align: end;
+  padding-left: 10px;
+}
+
+.bar .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  width: 120px;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.bar:hover .tooltiptext {
+  visibility: visible;
+}
