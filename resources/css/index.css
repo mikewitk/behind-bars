@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: rgba(0, 128, 128, 0.336);
 }
 
@@ -13,7 +13,8 @@ table {
   border-collapse: collapse;
 }
 
-td, th {
+td,
+th {
   border: 1px solid #999;
   padding: 2px 10px;
   text-align: center;
@@ -46,7 +47,7 @@ td, th {
 
 .y-axis-area {
   display: grid;
-  grid-template-rows: 80% 20% ;
+  grid-template-rows: 80% 20%;
   height: 100%;
 }
 
@@ -64,7 +65,7 @@ td, th {
 
 .bar-area {
   display: grid;
-  grid-template-rows: 80% 20% ;
+  grid-template-rows: 80% 20%;
   height: 100%;
   border-right: 2px dashed rgba(231, 228, 228, 0.123);
   width: 50px;
@@ -95,7 +96,7 @@ td, th {
 
 .x-axis-area {
   display: grid;
-  grid-template-rows: 80% 20% ;
+  grid-template-rows: 80% 20%;
   height: 100%;
 }
 
