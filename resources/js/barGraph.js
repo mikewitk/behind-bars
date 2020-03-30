@@ -19,7 +19,7 @@ const XAxis = ({ xLabel }) => `
   <div class="x-text">${xLabel}</div>
 </div>`;
 
-const SingleBar = (barHeight, labelName) => {
+const SingleBar = (barHeight, labelName, charCount) => {
   return `
     <div class="bar-area">
       <div class="bar-graph">
@@ -33,7 +33,6 @@ const SingleBar = (barHeight, labelName) => {
   `;
 };
 
-// see if you can turn this function into a Bars component (it should not receive the graphContainer)
 const Bars = ({ data }) => {
   const barValues = [];
   data.forEach(value => barValues.push(value.charCount));
@@ -45,12 +44,10 @@ const Bars = ({ data }) => {
     return SingleBar(barHeight, name);
   });
 
-  return output;
+  return output.join("");
 };
 
-// again, this BarGraph should only return a bunch of html
 const BarGraph = (yLabel, xLabel, data) => {
-  // something like this
   return `
       ${YAxis({ yLabel })}
       ${Bars({ data })}
