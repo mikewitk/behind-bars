@@ -4,6 +4,10 @@ const graphArea = document.getElementById("graph");
 
 const names = [];
 
+const updateDOM = graph => {
+  graphArea.innerHTML = graph;
+};
+
 const getData = () => {
   fetch("https://jsonplaceholder.typicode.com/users")
     .then(response => response.json())
@@ -11,7 +15,8 @@ const getData = () => {
       users.map(user => names.push(user.name));
       const analyzedNames = countCharacters(names);
       insertTableRow(tableBody, analyzedNames);
-      addBarGraph("Characters", "Names", analyzedNames, graphArea);
+      const graphs = BarGraph("Characters", "Names", analyzedNames);
+      updateDOM(graphs);
     });
 };
 
