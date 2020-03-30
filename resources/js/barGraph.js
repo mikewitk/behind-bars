@@ -5,8 +5,8 @@
 // it returns a `template string`, you can set an element's innerHTML equal to this
 const YAxis = ({ yLabel }) => `
 <div class="y-axis-area">
-  <div class="y-axis"></div>
-  <div class="y-text">${yLabel}</div>
+  <div class="y-axis">${yLabel}</div>
+  <div class="y-text"></div>
 </div>
 `;
 
@@ -19,73 +19,44 @@ const XAxis = ({ xLabel }) => `
   <div class="x-text">${xLabel}</div>
 </div>`;
 
+const SingleBar = (barHeight, labelName) => {
+  return `
+    <div class="bar-area">
+      <div class="bar-graph">
+        <div class="bar" style="height: ${[barHeight]}%">
+        </div>
+      </div>
+      <div class="bar-legend">
+        ${labelName}
+      </div>
+    </div>
+  `;
+};
+
 // see if you can turn this function into a Bars component (it should not receive the graphContainer)
-const Bars = (data, graphContainer) => {
+const Bars = ({ data }) => {
   const barValues = [];
   data.forEach(value => barValues.push(value.charCount));
   const baseNumber = highestValue(barValues);
 
-  data.forEach(element => {
-    let divBarArea = document.createElement("div");
-    divBarArea.classList.add("bar-area");
-
-    let divBarGraph = document.createElement("div");
-    divBarGraph.classList.add("bar-graph");
-
-    let bar = document.createElement("div");
-    bar.classList.add("bar");
-    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-    bar.style.backgroundColor = "#" + randomColor;
-
-    let divBarLegend = document.createElement("div");
-    divBarLegend.classList.add("bar-legend");
-
-    let spanTooltip = document.createElement("span");
-    spanTooltip.classList.add("tooltiptext");
-    spanTooltip.innerText = `${element.name} - ${element.charCount} chars`;
-
-    divBarGraph.appendChild(bar);
-    divBarArea.appendChild(divBarGraph);
-    divBarArea.appendChild(divBarLegend);
-
-    bar.style.height = ` ${(element.charCount / baseNumber) * 100}%`;
-    divBarLegend.innerText = element.name;
-
-    graphContainer.appendChild(divBarArea);
+  let output = data.map(barInfo => {
+    let barHeight = (barInfo.charCount / baseNumber) * 100;
+    const { name } = barInfo;
+    return SingleBar(barHeight, name);
   });
+
+  return output;
 };
 
 // again, this BarGraph should only return a bunch of html
-const BarGraph = (yLabel, xLabel, data, graphContainer) => {
-  // insertYAxis(yLabel, graphContainer);
-  // insertBars(data, graphContainer);
-  // insertXAxis(xLabel, graphContainer);
-
+const BarGraph = (yLabel, xLabel, data) => {
   // something like this
   return `
-  ${YAxis({ yLabel })}
-  ${Bars({ data })}
-  ${XAxis({ xLabel })}
+      ${YAxis({ yLabel })}
+      ${Bars({ data })}
+      ${XAxis({ xLabel })}
   `;
-  // !!!!!!!!!!!TOOLTIP WIP!!!!!!!!!!!!!!!!
-  // const allBars = document.getElementsByClassName('bar')
-
-  // const tooltip = (element) => {
-
-  //   const barArea = document.getElementById('graph')
-  //   console.log(element.target)
-  //   let spanTooltip = document.createElement('span');
-  //   spanTooltip.classList.add('tooltiptext');
-  //   // spanTooltip.innerText = `${element.name} - ${element.charCount} chars`;
-
-  //   barArea.appendChild(spanTooltip)
-
-  // }
-  // for ( let i = 0; i < 10; i++ ) {
-  //   console.log("for")
-  //   allBars[i].addEventListener('mouseover', e => tooltip(e))
-  // }
 };
 
 // finally, we can set the innerHTML of the graphContainer to the BarGraph component here
-graphContainer.innerHTML = BarGraph();
+// graphArea.innerHTML = BarGraph();
