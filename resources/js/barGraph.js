@@ -1,40 +1,26 @@
-const insertYAxis = (yLabel, graphContainer) => {
-  let yAxisArea = document.createElement("div");
-  yAxisArea.classList.add("y-axis-area");
+// in frameworks we make "Components" which return html
+// Components start with Uppercase
+// they take one argument, an object of "props" (properties)
+// here the YAxis has one prop, yLabel
+// it returns a `template string`, you can set an element's innerHTML equal to this
+const YAxis = ({ yLabel }) => `
+<div class="y-axis-area">
+  <div class="y-axis"></div>
+  <div class="y-text">${yLabel}</div>
+</div>
+`;
 
-  let yAxis = document.createElement("div");
-  yAxis.classList.add("y-axis");
+// we prefer for functions to be "pure" --> they don't modify the outside world,
+// they only ever take an input and give an output
+// your code is more predictable and easier to debug this way
+const XAxis = ({ xLabel }) => `
+<div class="x-axis-area">
+  <div class="x-axis"></div>
+  <div class="x-text">${xLabel}</div>
+</div>`;
 
-  let yText = document.createElement("div");
-  yText.classList.add("y-text");
-
-  yAxis.innerText = yLabel;
-
-  yAxisArea.appendChild(yAxis);
-  yAxisArea.appendChild(yText);
-
-  graphContainer.appendChild(yAxisArea);
-};
-
-const insertXAxis = (xLabel, graphContainer) => {
-  let xAxisArea = document.createElement("div");
-  xAxisArea.classList.add("x-axis-area");
-
-  let xAxis = document.createElement("div");
-  xAxis.classList.add("x-axis");
-
-  let xText = document.createElement("div");
-  xText.classList.add("x-text");
-
-  xText.innerText = xLabel;
-
-  xAxisArea.appendChild(xAxis);
-  xAxisArea.appendChild(xText);
-
-  graphContainer.appendChild(xAxisArea);
-};
-
-const insertBars = (data, graphContainer) => {
+// see if you can turn this function into a Bars component (it should not receive the graphContainer)
+const Bars = (data, graphContainer) => {
   const barValues = [];
   data.forEach(value => barValues.push(value.charCount));
   const baseNumber = highestValue(barValues);
@@ -69,11 +55,18 @@ const insertBars = (data, graphContainer) => {
   });
 };
 
-const addBarGraph = (yLabel, xLabel, data, graphContainer) => {
-  insertYAxis(yLabel, graphContainer);
-  insertBars(data, graphContainer);
-  insertXAxis(xLabel, graphContainer);
+// again, this BarGraph should only return a bunch of html
+const BarGraph = (yLabel, xLabel, data, graphContainer) => {
+  // insertYAxis(yLabel, graphContainer);
+  // insertBars(data, graphContainer);
+  // insertXAxis(xLabel, graphContainer);
 
+  // something like this
+  return `
+  ${YAxis({ yLabel })}
+  ${Bars({ data })}
+  ${XAxis({ xLabel })}
+  `;
   // !!!!!!!!!!!TOOLTIP WIP!!!!!!!!!!!!!!!!
   // const allBars = document.getElementsByClassName('bar')
 
@@ -93,3 +86,6 @@ const addBarGraph = (yLabel, xLabel, data, graphContainer) => {
   //   allBars[i].addEventListener('mouseover', e => tooltip(e))
   // }
 };
+
+// finally, we can set the innerHTML of the graphContainer to the BarGraph component here
+graphContainer.innerHTML = BarGraph();
