@@ -38,11 +38,27 @@ th {
 
 .graph-area {
   padding: 0 5px;
-  height: 80%;
+  height: 100%;
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+}
+
+.bar-area .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #0000002a;
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+}
+
+.bar-area:hover .tooltiptext {
+  visibility: visible;
 }
 
 .y-axis-area {
@@ -69,6 +85,7 @@ th {
   height: 100%;
   border-right: 2px dashed rgba(231, 228, 228, 0.123);
   width: 50px;
+  position: relative;
 }
 
 .bar-graph {
@@ -106,26 +123,4 @@ th {
   border-top: 2px solid lightgray;
   text-align: end;
   padding-left: 10px;
-}
-
-.bar .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  width: 120px;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-}
-
-.bar:hover .tooltiptext {
-  visibility: visible;
 }

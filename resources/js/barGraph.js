@@ -22,6 +22,7 @@ const XAxis = ({ xLabel }) => `
 const SingleBar = (barHeight, labelName, charCount) => {
   return `
     <div class="bar-area">
+    <span class="tooltiptext">Value: ${[barHeight.toFixed(0)]}</span>
       <div class="bar-graph">
         <div class="bar" style="height: ${[barHeight]}%">
         </div>
@@ -35,10 +36,10 @@ const SingleBar = (barHeight, labelName, charCount) => {
 
 const Bars = ({ data }) => {
   const barValues = [];
-  data.forEach(value => barValues.push(value.charCount));
+  data.forEach((value) => barValues.push(value.charCount));
   const baseNumber = highestValue(barValues);
 
-  let output = data.map(barInfo => {
+  let output = data.map((barInfo) => {
     let barHeight = (barInfo.charCount / baseNumber) * 100;
     const { name } = barInfo;
     return SingleBar(barHeight, name);
