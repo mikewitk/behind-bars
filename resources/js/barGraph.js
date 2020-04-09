@@ -13,16 +13,17 @@ const YAxis = ({ yLabel }) => `
 // we prefer for functions to be "pure" --> they don't modify the outside world,
 // they only ever take an input and give an output
 // your code is more predictable and easier to debug this way
+
 const XAxis = ({ xLabel }) => `
 <div class="x-axis-area">
   <div class="x-axis"></div>
   <div class="x-text">${xLabel}</div>
 </div>`;
 
-const SingleBar = (barHeight, labelName, charCount) => {
+const SingleBar = (barHeight, labelName) => {
   return `
     <div class="bar-area">
-    <span class="tooltiptext">Value: ${[barHeight.toFixed(0)]}</span>
+    <span class="tooltiptext">Value: ${[barHeight]}</span>
       <div class="bar-graph">
         <div class="bar" style="height: ${[barHeight]}%">
         </div>
@@ -40,7 +41,7 @@ const Bars = ({ data }) => {
   const baseNumber = highestValue(barValues);
 
   let output = data.map((barInfo) => {
-    let barHeight = (barInfo.charCount / baseNumber) * 100;
+    let barHeight = ((barInfo.charCount / baseNumber) * 100).toFixed(0);
     const { name } = barInfo;
     return SingleBar(barHeight, name);
   });
@@ -55,6 +56,3 @@ const BarGraph = (yLabel, xLabel, data) => {
       ${XAxis({ xLabel })}
   `;
 };
-
-// finally, we can set the innerHTML of the graphContainer to the BarGraph component here
-// graphArea.innerHTML = BarGraph();
