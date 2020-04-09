@@ -1,10 +1,20 @@
-const insertTableRow = (tBody, data) => {
-  data.forEach((element, index) => {
-    let row = tBody.insertRow(index);
-    let name = row.insertCell(0);
-    let count = row.insertCell(1);
+const insertTableRow = (data) => {
+  return `
+    <tr>
+      <td>${data.name}</td>
+      <td>${data.charCount}</td>
+    </tr>
+  `;
+};
 
-    name.innerText = element.name;
-    count.innerText = element.charCount;
-  });
+const insertTableBody = (data) => {
+  return `
+  <thead>
+    <th>Text</th>
+    <th>Char Qty</th>
+  </thead>
+  <tbody id="info-body">${data
+    .map((row) => insertTableRow(row))
+    .join("")}</tbody>
+  `;
 };

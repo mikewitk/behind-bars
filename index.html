@@ -11,6 +11,11 @@
       <div class="title">
         <h1>BEHIND BARS</h1>
       </div>
+      <div>
+        <h4>Select type of data</h4>
+        <button onclick="printGraphAndTable('names')">Names</button>
+        <button onclick="printGraphAndTable('emails')">Email</button>
+      </div>
       <div class="graph-container" id="graph-container">
         <div class="graph-area" id="graph">
           <!-- <div class="y-axis-area">
@@ -43,19 +48,20 @@
         </div> -->
         </div>
       </div>
+
       <div class="table-container">
         <table id="table">
-          <thead>
+          <!-- <thead>
             <th>ID</th>
             <th>Quantity</th>
           </thead>
-          <tbody></tbody>
+          <tbody></tbody> -->
         </table>
       </div>
     </div>
+    <script src="./resources/js/utils.js"></script>
+    <script src="./resources/js/barGraph.js"></script>
+    <script src="./resources/js/table.js"></script>
+    <script src="./resources/js/main.js"></script>
   </body>
-  <script src="./resources/js/utils.js"></script>
-  <script src="./resources/js/barGraph.js"></script>
-  <script src="./resources/js/table.js"></script>
-  <script src="./resources/js/main.js"></script>
 </html>
