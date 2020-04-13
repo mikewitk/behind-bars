@@ -1,13 +1,13 @@
 // Count number of characters
-const countCharacters = namesArr => {
+const countCharacters = (namesArr) => {
   const namesAnalysis = [];
-  namesArr.forEach(element => {
+  namesArr.forEach((element) => {
     const splitName = element.split(" ");
     const groupName = splitName.join("");
     let count = groupName.length;
     namesAnalysis.push({
       name: element,
-      charCount: count
+      charCount: count,
     });
   });
 
@@ -15,14 +15,6 @@ const countCharacters = namesArr => {
 };
 
 // Find highest value in a set of number
-const highestValue = values => {
-  let highestValue = 0;
-
-  values.forEach(value => {
-    if (value > highestValue) {
-      highestValue = value;
-    }
-  });
-
-  return highestValue;
+const highestValue = (values) => {
+  return Math.max(...values);
 };

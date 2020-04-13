@@ -33,7 +33,7 @@ const printGraphAndTable = (info) => {
 
   if (info === "names") {
     fullTable = insertTableBody(analyzedNames);
-    graph = BarGraph("Characters", "Names", analyzedNames);
+    graph = BarGraph("Chars", "Names", analyzedNames);
   } else if (info === "emails") {
     fullTable = insertTableBody(analyzedEmails);
     graph = BarGraph("Chars", "Emails", analyzedEmails);
